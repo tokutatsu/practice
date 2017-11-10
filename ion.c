@@ -3,6 +3,23 @@
 #include <time.h>
 #include <string.h>
 
+#define NUM 4
+
+void hantei(char* kaitou, int a){
+    
+    char* seikai[NUM];
+    seikai[1] = "1-";
+    seikai[2] = "1+";
+    seikai[3] = "2+";
+        
+    if(strcmp(kaitou, seikai[a]) == 0){
+        printf("正解\n");
+    }
+    else{
+        printf("不正解\n");
+    }
+}
+
 int GetRandom(int min, int max){
     return min + (int)(rand()*(max - min + 1.0) / (1.0 + RAND_MAX));
 }
@@ -12,37 +29,22 @@ void mondai(void){
     char kaitou[3];
     a = GetRandom(1, 3);
     
-    if(a == 1){
-        printf("塩化物イオン：");
-        scanf("%s", kaitou);
-        if(strcmp(kaitou, "1-") == 0){
-            printf("正解\n");
-        }
-        else{
-            printf("不正解\n");
-        }   
-    }
-    
-    if(a == 2){
-        printf("ナトリウムイオン：");
-        scanf("%s", kaitou);
-        if(strcmp(kaitou, "1+") == 0){
-            printf("正解\n");
-        }
-        else{
-            printf("不正解\n");
-        }
-    }
-
-    if(a == 3){
-        printf("銅イオン：");
-        scanf("%s", kaitou);
-        if(strcmp(kaitou, "2+") == 0){
-            printf("正解\n");
-        }
-        else{
-            printf("不正解\n");
-        }
+    switch(a){
+        case 1 :
+            printf("塩化物イオン：");
+            scanf("%s", kaitou);
+            hantei(kaitou, a);
+            break;   
+        case 2 :
+            printf("ナトリウムイオン：");
+            scanf("%s", kaitou);
+            hantei(kaitou, a);
+            break;   
+        case 3 :
+            printf("銅イオン：");
+            scanf("%s", kaitou);
+            hantei(kaitou, a);
+            break;
     }
 }
 
