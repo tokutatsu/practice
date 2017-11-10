@@ -3,14 +3,14 @@
 #include <time.h>
 #include <string.h>
 
-#define NUM 4
+#define NUM 5
 
 void hantei(char* kaitou, int a){
     
     char* seikai[NUM];
     seikai[1] = "1-";
     seikai[2] = "1+";
-    seikai[3] = "2+";
+    seikai[3] = seikai[4] = "2+";
         
     if(strcmp(kaitou, seikai[a]) == 0){
         printf("正解\n");
@@ -26,8 +26,8 @@ int GetRandom(int min, int max){
 
 void mondai(void){
     int a;
-    char kaitou[3];
-    a = GetRandom(1, 3);
+    char kaitou[NUM];
+    a = GetRandom(1, 4);
     
     switch(a){
         case 1 :
@@ -42,6 +42,11 @@ void mondai(void){
             break;   
         case 3 :
             printf("銅イオン：");
+            scanf("%s", kaitou);
+            hantei(kaitou, a);
+            break;
+        case 4 :
+            printf("マグネシウムイオン：");
             scanf("%s", kaitou);
             hantei(kaitou, a);
             break;
