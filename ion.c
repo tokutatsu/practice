@@ -5,12 +5,16 @@
 
 #define NUM 5
 
-void hantei(char* kaitou, int a){
+void hantei(int a){
     
-    char* seikai[NUM];
-    seikai[1] = "1-";
-    seikai[2] = "1+";
-    seikai[3] = seikai[4] = "2+";
+    char *seikai[NUM];
+    seikai[0] = "1-";
+    seikai[1] = "1+";
+    seikai[2] = seikai[3] = "2+";
+    seikai[4] = "2-";
+    
+    char kaitou[NUM];
+    scanf("%s", kaitou);
         
     if(strcmp(kaitou, seikai[a]) == 0){
         printf("正解\n");
@@ -26,29 +30,28 @@ int GetRandom(int min, int max){
 
 void mondai(void){
     int a;
-    char kaitou[NUM];
-    a = GetRandom(1, 4);
+    a = GetRandom(0, 4);
     
     switch(a){
-        case 1 :
+        case 0 :
             printf("塩化物イオン：");
-            scanf("%s", kaitou);
-            hantei(kaitou, a);
+            hantei(a);
+            break;   
+        case 1 :
+            printf("ナトリウムイオン：");
+            hantei(a);
             break;   
         case 2 :
-            printf("ナトリウムイオン：");
-            scanf("%s", kaitou);
-            hantei(kaitou, a);
-            break;   
-        case 3 :
             printf("銅イオン：");
-            scanf("%s", kaitou);
-            hantei(kaitou, a);
+            hantei(a);
+            break;
+        case 3 :
+            printf("マグネシウムイオン：");
+            hantei(a);
             break;
         case 4 :
-            printf("マグネシウムイオン：");
-            scanf("%s", kaitou);
-            hantei(kaitou, a);
+            printf("硫酸イオン：");
+            hantei(a);
             break;
     }
 }
