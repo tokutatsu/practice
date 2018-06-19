@@ -8,21 +8,21 @@
 void mondai(void);
 void hantei(int a);
 int GetRandom(int min, int max);
+void Start();
 
 int main(void){
     srand((unsigned) time(NULL));
 
     printf("例：1価の陽イオン→　1+　　1価の陰イオン→　1-\n");
-    printf("スタート:Enter");
+    printf("Enterでスタート");
+    Start();
 
     int retry;
     do {
         mondai();
-
         printf("もう一度：1、終わり0:");
         scanf("%d", &retry);
-
-    } while(retry == 1);
+    } while (retry == 1);
 
     return 0;
 }
@@ -75,5 +75,15 @@ void hantei(int a){
 }
 
 int GetRandom(int min, int max){
-    return min + (int)(rand()*(max - min + 1.0) / (1.0 + RAND_MAX));
+    return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
+}
+
+void Start() {
+    char buf[10];
+    if (*fgets(buf, 10, stdin) == '\n') {
+        return;
+    } else {
+        printf("Enterキーだけを押してください");
+        Start();
+    }
 }
