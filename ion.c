@@ -3,10 +3,10 @@
 #include <time.h>
 #include <string.h>
 
-#define NUM 5
+#define NUM 5   //問題数
 
-void mondai(void);
-void hantei(int a);
+void Problem(void);
+void Judge(int num, char *correct);
 int GetRandom(int min, int max);
 void Start();
 
@@ -19,68 +19,60 @@ int main(void){
 
     int retry;
     do {
-        mondai();
-        printf("もう一度：1、終わり0:");
+        Problem();
+        printf("もう一度:1、終わり:0:");
         scanf("%d", &retry);
     } while (retry == 1);
 
     return 0;
 }
 
-void mondai(void){
-    int a;
-    a = GetRandom(0, 4);
+void Problem(void) {
+    int num;
+    num = GetRandom(0, NUM - 1);
 
-    switch (a) {
+    switch (num) {
         case 0 :
             printf("塩化物イオン：");
-            hantei(a);
+            Judge(num, "1-");
             break;   
         case 1 :
             printf("ナトリウムイオン：");
-            hantei(a);
+            Judge(num, "1+");
             break;   
         case 2 :
             printf("銅イオン：");
-            hantei(a);
+            Judge(num, "2+");
             break;
         case 3 :
             printf("マグネシウムイオン：");
-            hantei(a);
+            Judge(num, "2+");
             break;
         case 4 :
             printf("硫酸イオン：");
-            hantei(a);
+            Judge(num, "2-");
             break;
     }
 }
 
-void hantei(int a){
+void Judge(int num, char *correct) {
+    char answer[NUM];
+    scanf("%s", answer);
 
-    char *seikai[NUM];
-    seikai[0] = "1-";
-    seikai[1] = "1+";
-    seikai[2] = seikai[3] = "2+";
-    seikai[4] = "2-";
-
-    char kaitou[NUM];
-    scanf("%s", kaitou);
-
-    if (strcmp(kaitou, seikai[a]) == 0) {
+    if (strcmp(answer, correct) == 0) {
         printf("正解\n");
-    }
-    else {
+    } else {
         printf("不正解\n");
     }
 }
 
-int GetRandom(int min, int max){
+int GetRandom(int min, int max) {
     return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
 }
 
 void Start() {
-    char buf[10];
-    if (*fgets(buf, 10, stdin) == '\n') {
+    char buf[100];
+    if (*fgets(buf, 100, stdin) == '\n') {
         return;
     } else {
         printf("Enterキーだけを押してください");
