@@ -10,7 +10,7 @@ void Judge(int num, char *correct);
 int GetRandom(int min, int max);
 void Start();
 
-int main(void){
+int main(void) {
     srand((unsigned) time(NULL));
 
     printf("例：1価の陽イオン→　1+　　1価の陰イオン→　1-\n");
